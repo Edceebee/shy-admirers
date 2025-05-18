@@ -14,10 +14,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static io.jsonwebtoken.io.Decoders.*;
+
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "7C2A165F442A572D5F735F4428472B4B6250655368566D597133743677397A2443";
+    private static final String SECRET_KEY = "apIgbVch3xFrI8MgnwM5FrvVkm8RplLbF6cOeAXnZxY=";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -69,4 +71,5 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
 }
