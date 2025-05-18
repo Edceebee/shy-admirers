@@ -8,13 +8,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CustomUserDetails implements UserDetails {
-
-    private final AppUser user;
-
-    public CustomUserDetails(AppUser user) {
-        this.user = user;
-    }
+public record CustomUserDetails(AppUser user) implements UserDetails {
 
 
     @Override
@@ -41,13 +35,25 @@ public class CustomUserDetails implements UserDetails {
         return user.getUsername();
     }
 
-    @Override public boolean isAccountNonExpired() { return true; }
-    @Override public boolean isAccountNonLocked() { return true; }
-    @Override public boolean isCredentialsNonExpired() { return true; }
-    @Override public boolean isEnabled() { return true; }
-
-    public AppUser getUser() {
-        return user;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }
 

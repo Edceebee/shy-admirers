@@ -4,6 +4,7 @@ import com.aksh.shyadmirer.models.AppUser;
 import com.aksh.shyadmirer.models.Role;
 import com.aksh.shyadmirer.repository.AppUserRepository;
 import com.aksh.shyadmirer.repository.RoleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Collections;
 
 @Configuration
+@Slf4j
 public class DataInitializer {
 
     @Bean
@@ -39,9 +41,9 @@ public class DataInitializer {
                 admin.setPassword(passwordEncoder.encode(password));
                 admin.setRoles(Collections.singleton(adminRole));
                 userRepo.save(admin);
-                System.out.println("Created default admin user: " + username);
+                log.info("Created default admin user: {}", username);
             } else {
-                System.out.println("Admin user already exists: " + username);
+                log.info("Admin user already exists: {}", username);
             }
         };
     }

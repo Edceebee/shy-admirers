@@ -3,17 +3,17 @@ package com.aksh.shyadmirer.security;
 import com.aksh.shyadmirer.models.AppUser;
 import com.aksh.shyadmirer.models.CustomUserDetails;
 import com.aksh.shyadmirer.repository.AppUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private AppUserRepository userRepository;
+    private final AppUserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username)

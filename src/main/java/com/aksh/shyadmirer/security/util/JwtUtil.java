@@ -23,9 +23,8 @@ public class JwtUtil {
 
     @PostConstruct
     public void init() {
-        // Decode Base64 key
         byte[] keyBytes = Base64.getDecoder().decode(secret);
-        key = Keys.hmacShaKeyFor(keyBytes); // uses appropriate key size
+        key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String generateToken(UserDetails userDetails) {
